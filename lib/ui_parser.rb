@@ -16,7 +16,13 @@ class UIParser < Thor
 
   def interface(file = DATA_FILE)
     data = JSON.parse File.read(file)
-    puts data
+    say 'User Interface Data has been loaded and is ready to parse'
+    
+    loop do
+      result = ask 'Enter a selector:'
+      break if result =~ /^exit|done|quit|end$/i
+    end
+    
   end
 
 end
